@@ -1,7 +1,6 @@
 pluginManagement {
     repositories {
-        maven { url 'https://www.nexus.ford.com/repository/external-proxy-group' }
-        maven { url 'https://www.nexus.ford.com/repository/public' }
+        mavenCentral()
     }
 }
 
