@@ -1,38 +1,39 @@
 plugins {
-	id 'java'
-	id 'maven-publish'
 	id 'org.springframework.boot' version '2.3.4.RELEASE'
-	id 'gradle-boost' version '3.0.1'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'java'
 	id 'jacoco'
-	id 'org.sonarqube' version '2.7'
 }
 
-
 group = 'com.pessoal.andre'
-version = gradleBoost.fn.gitVersion()
-println "Build Version = ${version ?: '[none]'}"
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+	jcenter()
+	maven { url 'https://repo.spring.io/milestone' }
+}
 
 dependencies {
-	// Bill Of Materials Imports
-	bomImport platform('org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR8')
-	bomImport platform(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
-	bomImport platform('io.pivotal.spring.cloud:spring-cloud-services-dependencies:2.2.4.RELEASE')
 
 	//Core libraries
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-	implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
-	implementation 'io.springfox:springfox-swagger2:2.9.2'
-	implementation 'io.springfox:springfox-swagger-ui:2.9.2'
-
-	//security
+	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 
-	//other
-	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
+	//swaggera
+	implementation "io.springfox:springfox-swagger2:2.10.5"
+	implementation "io.springfox:springfox-swagger-ui:2.10.5"
 
 	//DB
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -40,8 +41,17 @@ dependencies {
 
 	/*********** TEST ***********/
 	implementation 'com.github.javafaker:javafaker:1.0.2'
-	testImplementation 'com.ford.cloudnative:spring-base-test:2.3.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation 'org.mockito:mockito-core:2.7.22'
+	testCompile 'junit:junit:4.12'
+	testCompile 'org.mockito:mockito-core:2.7.22'
+
+	//LOMBOK
+	annotationProcessor 'org.projectlombok:lombok'
+	compileOnly 'org.projectlombok:lombok'
 	testAnnotationProcessor 'org.projectlombok:lombok'
+	testCompileOnly 'org.projectlombok:lombok'
+
+	implementation 'com.google.code.findbugs:jsr305:3.0.2'
 }

@@ -1,53 +1,34 @@
-### Local properties file ###
-**/application-local.yml
-**/application-local.properties
-
-### Common Build Deploy ###
-**/manifest-generated.yml
-
-### Build Output Directories (Combined) ###
+HELP.md
+.gradle
 build/
-bin/
-classes/
-out/
-target/
-log/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
 
-### Gradle ###
-.gradle/
-
-### Maven ###
-.mvn/
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
 
 ### IntelliJ IDEA ###
-.idea/
+.idea
 *.iws
 *.iml
 *.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
 
-### Eclipse ###
-.settings/
-.classpath
-.project
-.metadata
-.springBeans
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
 
-### Node/NPM ###
-node_modules/
-dist/
-typings/
-coverage/
-jspm_packages/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.env
-
-### OS Specific ###
-.DS_Store
-Thumbs.db
-[Dd]esktop.ini
-$RECYCLE.BIN/
-
-### Other ###
-*.swp
+### VS Code ###
+.vscode/
