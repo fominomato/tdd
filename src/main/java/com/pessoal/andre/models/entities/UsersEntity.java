@@ -1,37 +1,34 @@
 package com.pessoal.andre.models.entities;
 
-import java.time.LocalDateTime;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import javax.persistence.*;
+import java.time.LocalDateTime;
+
 @Data
 @NoArgsConstructor
-@Table(name = "Filmes",  uniqueConstraints={
-    @UniqueConstraint( name = "uq_nome",  columnNames ={"nome"})
+@Table(name = "usuarios",  uniqueConstraints={
+    @UniqueConstraint( name = "uq_usuarios",  columnNames ={"nome", "email"})
   }
 )
 @Entity
-public class FilmesEntity {
+public class UsersEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(unique=true)
-  private String nome;
+  @Column(unique = true, name = "nome")
+  private String name;
 
-  private String genero;
+  @Column(name = "apelido")
+  private String nickname;
 
-  private int quantidade;
+  @Column(unique = true)
+  private String email;
 
   @LastModifiedBy
   @Column(name = "updated_by")

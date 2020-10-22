@@ -1,7 +1,7 @@
 package com.pessoal.andre.controller;
 
-import com.pessoal.andre.models.representation.GestaoFilmesInsertRequest;
-import com.pessoal.andre.service.GestaoFilmesInsertService;
+import com.pessoal.andre.models.representation.ManagementMovieInsertRequest;
+import com.pessoal.andre.service.ManagementMovieInsertService;
 import javassist.bytecode.DuplicateMemberException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,18 +14,18 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GestaoFilmesControllerTest {
+public class ManagementMovieControllerTest {
 
   @InjectMocks
-  private GestaoFilmesController controller;
+  private ManagementMovieController controller;
 
   @Mock
-  private GestaoFilmesInsertService service;
+  private ManagementMovieInsertService service;
 
   @Test
   public void addFilme() throws DuplicateMemberException {
     doNothing().when(this.service).registrarFilme(any());
-    this.controller.adicionaFilme(Mockito.mock(GestaoFilmesInsertRequest.class));
+    this.controller.adicionaFilme(Mockito.mock(ManagementMovieInsertRequest.class));
   }
 
   @Test

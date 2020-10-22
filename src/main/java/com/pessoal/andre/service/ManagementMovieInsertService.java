@@ -1,9 +1,9 @@
 package com.pessoal.andre.service;
 
 import com.pessoal.andre.repository.FilmesRepository;
-import com.pessoal.andre.models.entities.FilmesEntity;
+import com.pessoal.andre.models.entities.MoviesEntity;
 import com.pessoal.andre.models.mapper.GestaoFilmesRequestMapper;
-import com.pessoal.andre.models.representation.GestaoFilmesInsertRequest;
+import com.pessoal.andre.models.representation.ManagementMovieInsertRequest;
 import javassist.bytecode.DuplicateMemberException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,33 +13,33 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
-public class GestaoFilmesInsertService {
+public class ManagementMovieInsertService {
 
   private final FilmesRepository filmesRepository;
 
   private final GestaoFilmesRequestMapper requestMapper;
 
   @Autowired
-  public GestaoFilmesInsertService(FilmesRepository filmesRepository, GestaoFilmesRequestMapper requestMapper) {
+  public ManagementMovieInsertService(FilmesRepository filmesRepository, GestaoFilmesRequestMapper requestMapper) {
     this.filmesRepository = filmesRepository;
     this.requestMapper = requestMapper;
   }
 
   @Transactional(rollbackFor = DataIntegrityViolationException.class)
-  public void registrarFilme(GestaoFilmesInsertRequest gestaoFilmesInsertRequest) throws DuplicateMemberException {
+  public void registrarFilme(ManagementMovieInsertRequest managementMovieInsertRequest) throws DuplicateMemberException {
     try {
-      this.aplicaRemocao(gestaoFilmesInsertRequest);
-      FilmesEntity filmesEntity = this.requestMapper.mapTO(gestaoFilmesInsertRequest);
-      this.filmesRepository.save(filmesEntity);
+      this.aplicaRemocao(managementMovieInsertRequest);
+      MoviesEntity moviesEntity = this.requestMapper.mapTO(managementMovieInsertRequest);
+      this.filmesRepository.save(moviesEntity);
     } catch (DataIntegrityViolationException e) {
       log.error("Issue found because this movie its duplicated!");
       throw new DuplicateMemberException("Filme em duplicidade!");
     }
   }
 
-  private void aplicaRemocao(GestaoFilmesInsertRequest gestaoFilmesInsertRequest) {
-    if (gestaoFilmesInsertRequest.getGenero().equalsIgnoreCase("TERROR")) {
-      gestaoFilmesInsertRequest.setQuantidade(gestaoFilmesInsertRequest.getQuantidade() - 1);
+  private void aplicaRemocao(ManagementMovieInsertRequest managementMovieInsertRequest) {
+    if (managementMovieInsertRequest.getGenero().equalsIgnoreCase("TERROR")) {
+      managementMovieInsertRequest.setQuantidade(managementMovieInsertRequest.getQuantidade() - 1);
     }
   }
 }

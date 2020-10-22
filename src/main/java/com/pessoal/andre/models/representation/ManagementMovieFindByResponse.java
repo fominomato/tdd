@@ -3,7 +3,7 @@ package com.pessoal.andre.models.representation;
 import lombok.Data;
 
 @Data
-public class GestaoFilmesInsertRequest {
+public class ManagementMovieFindByResponse {
 
   private String nome;
 

@@ -1,6 +1,6 @@
 package com.pessoal.andre.mock.entity;
 
-import com.pessoal.andre.models.entities.FilmesEntity;
+import com.pessoal.andre.models.entities.MoviesEntity;
 import com.github.javafaker.Faker;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -9,43 +9,43 @@ import java.util.Date;
 import java.util.List;
 import org.apache.commons.lang3.time.DateUtils;
 
-public class FilmesMock {
+public class MoviesMock {
 
   private Faker faker;
 
-  public FilmesEntity getFilmesEntity() {
+  public MoviesEntity getFilmesEntity() {
     this.faker = new Faker();
     return this.generated();
   }
 
-  public List<FilmesEntity> getListOfFilmesEntity(int numberOfElements) {
+  public List<MoviesEntity> getListOfFilmesEntity(int numberOfElements) {
     this.faker = new Faker();
-    List<FilmesEntity> entityList = new ArrayList<>();
+    List<MoviesEntity> entityList = new ArrayList<>();
     for (int c = 0; c < numberOfElements; c++) {
       entityList.add(this.generated());
     }
     return entityList;
   }
 
-  private FilmesEntity generated() {
-    FilmesEntity filmesEntity = new FilmesEntity();
-    filmesEntity.setNome(this.faker.pokemon().name());
-    filmesEntity.setQuantidade(this.faker.random().nextInt(1, 99));
+  private MoviesEntity generated() {
+    MoviesEntity moviesEntity = new MoviesEntity();
+    moviesEntity.setName(this.faker.pokemon().name());
+    moviesEntity.setQuantity(this.faker.random().nextInt(1, 99));
     String[] generos = {"TERROR", "ROMANCE", "AVENTURA"};
-    filmesEntity.setGenero(generos[this.faker.random().nextInt(0, 2)]);
-    filmesEntity.setCreatedBy(this.faker.name().firstName());
-    filmesEntity.setUpdatedBy(this.faker.name().firstName());
+    moviesEntity.setGenre(generos[this.faker.random().nextInt(0, 2)]);
+    moviesEntity.setCreatedBy(this.faker.name().firstName());
+    moviesEntity.setUpdatedBy(this.faker.name().firstName());
 
     Date dateBefore15Days = DateUtils.addDays(new Date(),-15);
-    filmesEntity.setCreatedAt(
+    moviesEntity.setCreatedAt(
         LocalDateTime.ofInstant(this.faker.date().between(dateBefore15Days, new Date()).toInstant(),
         ZoneId.systemDefault()
     ));
     Date dateBefore10Days = DateUtils.addDays(new Date(),-10);
-    filmesEntity.setUpdatedAt(
+    moviesEntity.setUpdatedAt(
       LocalDateTime.ofInstant(this.faker.date().between(dateBefore10Days, new Date()).toInstant(),
           ZoneId.systemDefault()
     ));
-    return filmesEntity;
+    return moviesEntity;
   }
 }

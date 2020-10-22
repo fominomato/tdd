@@ -3,12 +3,12 @@ package com.pessoal.andre.service;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-import com.pessoal.andre.mock.entity.FilmesMock;
-import com.pessoal.andre.models.entities.FilmesEntity;
+import com.pessoal.andre.mock.entity.MoviesMock;
+import com.pessoal.andre.models.entities.MoviesEntity;
 import com.pessoal.andre.models.mapper.GestaoFilmesRequestMapper;
-import com.pessoal.andre.models.representation.GestaoFilmesInsertRequest;
+import com.pessoal.andre.models.representation.ManagementMovieInsertRequest;
 import com.pessoal.andre.repository.FilmesRepository;
-import com.pessoal.andre.mock.representation.GestaoFilmesInsertRequestMock;
+import com.pessoal.andre.mock.representation.ManagementMovieInsertRequestMock;
 import javassist.bytecode.DuplicateMemberException;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Rule;
@@ -22,10 +22,10 @@ import org.springframework.dao.DataIntegrityViolationException;
 
 @Slf4j
 @RunWith(MockitoJUnitRunner.class)
-public class GestaoFilmesInsertServiceTest {
+public class ManagementMovieInsertServiceTest {
 
   @InjectMocks
-  private GestaoFilmesInsertService service;
+  private ManagementMovieInsertService service;
 
   @Mock
   private FilmesRepository repository;
@@ -36,22 +36,22 @@ public class GestaoFilmesInsertServiceTest {
   @Rule
   public ExpectedException exceptionRule = ExpectedException.none();
 
-  private FilmesMock filmesMock = new FilmesMock();
+  private MoviesMock moviesMock = new MoviesMock();
 
-  private GestaoFilmesInsertRequestMock requestMock = new GestaoFilmesInsertRequestMock();
+  private ManagementMovieInsertRequestMock requestMock = new ManagementMovieInsertRequestMock();
 
   @Test
   public void registrarFilme() throws DuplicateMemberException {
-    FilmesEntity filmesEntity = this.filmesMock.getFilmesEntity();
-    when(this.repository.save(any())).thenReturn(filmesEntity);
+    MoviesEntity moviesEntity = this.moviesMock.getFilmesEntity();
+    when(this.repository.save(any())).thenReturn(moviesEntity);
     this.service.registrarFilme(this.requestMock.getGestaoFilmesInsertRequest());
   }
 
   @Test
   public void registrarFilmeSemMapper() throws DuplicateMemberException {
-    FilmesEntity filmesEntity = this.filmesMock.getFilmesEntity();
-    when(this.repository.save(any())).thenReturn(filmesEntity);
-    when(this.requestMapper.mapTO((GestaoFilmesInsertRequest) any())).thenReturn(filmesEntity);
+    MoviesEntity moviesEntity = this.moviesMock.getFilmesEntity();
+    when(this.repository.save(any())).thenReturn(moviesEntity);
+    when(this.requestMapper.mapTO((ManagementMovieInsertRequest) any())).thenReturn(moviesEntity);
     this.service.registrarFilme(this.requestMock.getGestaoFilmesInsertRequest());
   }
 

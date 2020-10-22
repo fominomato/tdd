@@ -1,7 +1,7 @@
 package com.pessoal.andre.models.mapper;
 
-import com.pessoal.andre.models.entities.FilmesEntity;
-import com.pessoal.andre.models.representation.GestaoFilmesInsertRequest;
+import com.pessoal.andre.models.entities.MoviesEntity;
+import com.pessoal.andre.models.representation.ManagementMovieInsertRequest;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,7 +9,7 @@ import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 
 //@todo Este teste não implementa o RunWith então devemos inicializar o mockito
-public class GestaoFilmesRequestMapperTest {
+public class ManagementMovieRequestMapperTest {
 
   @InjectMocks
   private GestaoFilmesRequestMapper requestMapper;
@@ -21,12 +21,12 @@ public class GestaoFilmesRequestMapperTest {
 
   @Test
   public void mapTO() {
-    FilmesEntity entity = this.requestMapper.mapTO(this.getGestaoFilmesInsertRequest());
-    Assert.assertEquals(entity.getGenero(), this.getGestaoFilmesInsertRequest().getGenero());
+    MoviesEntity entity = this.requestMapper.mapTO(this.getGestaoFilmesInsertRequest());
+    Assert.assertEquals(entity.getGenre(), this.getGestaoFilmesInsertRequest().getGenero());
   }
 
-  private GestaoFilmesInsertRequest getGestaoFilmesInsertRequest() {
-    GestaoFilmesInsertRequest response = new GestaoFilmesInsertRequest();
+  private ManagementMovieInsertRequest getGestaoFilmesInsertRequest() {
+    ManagementMovieInsertRequest response = new ManagementMovieInsertRequest();
     response.setNome("TESTE");
     response.setGenero("TECNOLOGIA");
     response.setQuantidade(10);
