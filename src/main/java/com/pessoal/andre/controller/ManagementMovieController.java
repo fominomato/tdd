@@ -6,7 +6,7 @@ import com.pessoal.andre.models.representation.ManagementMovieInsertRequest;
 import com.pessoal.andre.service.ManagementMovieInsertService;
 import com.pessoal.andre.service.ManagementMovieSearchService;
 import javassist.bytecode.DuplicateMemberException;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -16,22 +16,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/gestao/filmes")
+@RequiredArgsConstructor
 public class ManagementMovieController {
 
   private final ManagementMovieInsertService managementMovieInsertService;
 
   private final ManagementMovieSearchService managementMovieSearchService;
 
-  @Autowired
-  public ManagementMovieController(
-          ManagementMovieInsertService managementMovieInsertService,
-          ManagementMovieSearchService managementMovieSearchService
-  ) {
-    this.managementMovieInsertService = managementMovieInsertService;
-    this.managementMovieSearchService = managementMovieSearchService;
-  }
-
-  @PostMapping("/adicionar")
+  @PostMapping("/")
   public ResponseEntity<?> adicionaFilme(
       @RequestBody @Validated ManagementMovieInsertRequest managementMovieInsertRequest
   ) throws DuplicateMemberException {
@@ -39,7 +31,7 @@ public class ManagementMovieController {
       return ResponseEntity.ok().body("sucess");
   }
 
-  @GetMapping("/pesquisar")
+  @GetMapping("/")
   public ResponseEntity<List<ManagementMovieFindByResponse>> searchMoviesBy(@Valid ManagementMovieFindByRequest request) {
     return ResponseEntity.ok().body(this.managementMovieSearchService.searchMovies(request));
   }

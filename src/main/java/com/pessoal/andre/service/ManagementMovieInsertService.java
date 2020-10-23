@@ -1,29 +1,24 @@
 package com.pessoal.andre.service;
 
-import com.pessoal.andre.repository.FilmesRepository;
 import com.pessoal.andre.models.entities.MoviesEntity;
 import com.pessoal.andre.models.mapper.GestaoFilmesRequestMapper;
 import com.pessoal.andre.models.representation.ManagementMovieInsertRequest;
+import com.pessoal.andre.repository.FilmesRepository;
 import javassist.bytecode.DuplicateMemberException;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class ManagementMovieInsertService {
 
   private final FilmesRepository filmesRepository;
 
   private final GestaoFilmesRequestMapper requestMapper;
-
-  @Autowired
-  public ManagementMovieInsertService(FilmesRepository filmesRepository, GestaoFilmesRequestMapper requestMapper) {
-    this.filmesRepository = filmesRepository;
-    this.requestMapper = requestMapper;
-  }
 
   @Transactional(rollbackFor = DataIntegrityViolationException.class)
   public void registrarFilme(ManagementMovieInsertRequest managementMovieInsertRequest) throws DuplicateMemberException {
