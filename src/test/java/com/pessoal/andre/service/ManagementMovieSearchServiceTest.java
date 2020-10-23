@@ -3,8 +3,8 @@ package com.pessoal.andre.service;
 import com.pessoal.andre.mock.entity.MoviesMock;
 import com.pessoal.andre.mock.representation.ManagementMovieFindRequestMock;
 import com.pessoal.andre.mock.representation.ManagementMovieFindResponseMock;
-import com.pessoal.andre.models.entities.MoviesEntity;
-import com.pessoal.andre.models.mapper.GestaoFilmesRequestMapper;
+import com.pessoal.andre.models.entities.MovieEntity;
+import com.pessoal.andre.models.mapper.ManagementMovieRequestMapper;
 import com.pessoal.andre.models.representation.ManagementMovieFindByRequest;
 import com.pessoal.andre.models.representation.ManagementMovieFindByResponse;
 import com.pessoal.andre.repository.MoviesRepository;
@@ -32,7 +32,7 @@ public class ManagementMovieSearchServiceTest {
   private MoviesRepository moviesRepository;
 
   @Mock
-  private GestaoFilmesRequestMapper requestMapper;
+  private ManagementMovieRequestMapper requestMapper;
 
   private ManagementMovieFindRequestMock findRequestMock = new ManagementMovieFindRequestMock();
 
@@ -44,10 +44,10 @@ public class ManagementMovieSearchServiceTest {
   public void pesquisaFilmes() {
     ManagementMovieFindByRequest request = this.findRequestMock.getGestaoFilmesFindRequest();
     request.setName(null);
-    List<MoviesEntity> moviesEntityList = this.moviesMock.getListOfFilmesEntity(2000);
-    when(this.moviesRepository.findAll()).thenReturn(moviesEntityList);
-    when(this.requestMapper.mapTO((MoviesEntity) any())).thenReturn(this.responseMock.getGestaoFilmesFindByResponse(
-        (moviesEntityList
+    List<MovieEntity> movieEntityList = this.moviesMock.getListOfFilmesEntity(2000);
+    when(this.moviesRepository.findAll()).thenReturn(movieEntityList);
+    when(this.requestMapper.mapTO((MovieEntity) any())).thenReturn(this.responseMock.getGestaoFilmesFindByResponse(
+        (movieEntityList
             .stream()
             .filter(item ->
               (request.getGenre() != null && request.getGenre().equalsIgnoreCase(item.getGenre())) ||

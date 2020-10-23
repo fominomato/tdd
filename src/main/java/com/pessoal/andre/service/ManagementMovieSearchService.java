@@ -1,7 +1,7 @@
 package com.pessoal.andre.service;
 
-import com.pessoal.andre.models.entities.MoviesEntity;
-import com.pessoal.andre.models.mapper.GestaoFilmesRequestMapper;
+import com.pessoal.andre.models.entities.MovieEntity;
+import com.pessoal.andre.models.mapper.ManagementMovieRequestMapper;
 import com.pessoal.andre.models.representation.ManagementMovieFindByRequest;
 import com.pessoal.andre.models.representation.ManagementMovieFindByResponse;
 import com.pessoal.andre.repository.MoviesRepository;
@@ -19,10 +19,10 @@ public class ManagementMovieSearchService {
 
   private final MoviesRepository moviesRepository;
 
-  private final GestaoFilmesRequestMapper requestMapper;
+  private final ManagementMovieRequestMapper requestMapper;
 
   public List<ManagementMovieFindByResponse> searchMovies(ManagementMovieFindByRequest findByRequest) {
-    List<MoviesEntity> entityList = this.moviesRepository.findAll().stream()
+    List<MovieEntity> entityList = this.moviesRepository.findAll().stream()
       .filter(item ->
           (findByRequest.getGenre() != null && findByRequest.getGenre().equalsIgnoreCase(item.getGenre())) ||
           (findByRequest.getName() != null && findByRequest.getName().equalsIgnoreCase(item.getName()))

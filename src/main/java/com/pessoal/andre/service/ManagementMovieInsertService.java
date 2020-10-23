@@ -1,7 +1,7 @@
 package com.pessoal.andre.service;
 
-import com.pessoal.andre.models.entities.MoviesEntity;
-import com.pessoal.andre.models.mapper.GestaoFilmesRequestMapper;
+import com.pessoal.andre.models.entities.MovieEntity;
+import com.pessoal.andre.models.mapper.ManagementMovieRequestMapper;
 import com.pessoal.andre.models.representation.ManagementMovieInsertRequest;
 import com.pessoal.andre.repository.MoviesRepository;
 import javassist.bytecode.DuplicateMemberException;
@@ -18,14 +18,14 @@ public class ManagementMovieInsertService {
 
   private final MoviesRepository moviesRepository;
 
-  private final GestaoFilmesRequestMapper requestMapper;
+  private final ManagementMovieRequestMapper requestMapper;
 
   @Transactional(rollbackFor = DataIntegrityViolationException.class)
   public void registrarFilme(ManagementMovieInsertRequest managementMovieInsertRequest) throws DuplicateMemberException {
     try {
       this.aplicaRemocao(managementMovieInsertRequest);
-      MoviesEntity moviesEntity = this.requestMapper.mapTO(managementMovieInsertRequest);
-      this.moviesRepository.save(moviesEntity);
+      MovieEntity movieEntity = this.requestMapper.mapTO(managementMovieInsertRequest);
+      this.moviesRepository.save(movieEntity);
     } catch (DataIntegrityViolationException e) {
       log.error("Issue found because this movie its duplicated!");
       throw new DuplicateMemberException("Filme em duplicidade!");

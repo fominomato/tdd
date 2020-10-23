@@ -1,6 +1,6 @@
 package com.pessoal.andre.models.mapper;
 
-import com.pessoal.andre.models.entities.MoviesEntity;
+import com.pessoal.andre.models.entities.MovieEntity;
 import com.pessoal.andre.models.representation.ManagementMovieInsertRequest;
 import org.junit.Assert;
 import org.junit.Before;
@@ -12,7 +12,7 @@ import org.mockito.MockitoAnnotations;
 public class ManagementMovieRequestMapperTest {
 
   @InjectMocks
-  private GestaoFilmesRequestMapper requestMapper;
+  private ManagementMovieRequestMapper requestMapper;
 
   @Before
   public void executaAntes() {
@@ -21,7 +21,7 @@ public class ManagementMovieRequestMapperTest {
 
   @Test
   public void mapTO() {
-    MoviesEntity entity = this.requestMapper.mapTO(this.getGestaoFilmesInsertRequest());
+    MovieEntity entity = this.requestMapper.mapTO(this.getGestaoFilmesInsertRequest());
     Assert.assertEquals(entity.getGenre(), this.getGestaoFilmesInsertRequest().getGenre());
   }
 

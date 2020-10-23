@@ -2,8 +2,8 @@ package com.pessoal.andre.service;
 
 import com.pessoal.andre.mock.entity.MoviesMock;
 import com.pessoal.andre.mock.representation.ManagementMovieInsertRequestMock;
-import com.pessoal.andre.models.entities.MoviesEntity;
-import com.pessoal.andre.models.mapper.GestaoFilmesRequestMapper;
+import com.pessoal.andre.models.entities.MovieEntity;
+import com.pessoal.andre.models.mapper.ManagementMovieRequestMapper;
 import com.pessoal.andre.models.representation.ManagementMovieInsertRequest;
 import com.pessoal.andre.repository.MoviesRepository;
 import javassist.bytecode.DuplicateMemberException;
@@ -31,7 +31,7 @@ public class ManagementMovieInsertServiceTest {
   private MoviesRepository repository;
 
   @Mock
-  private GestaoFilmesRequestMapper requestMapper;
+  private ManagementMovieRequestMapper requestMapper;
 
   @Rule
   public ExpectedException exceptionRule = ExpectedException.none();
@@ -42,16 +42,16 @@ public class ManagementMovieInsertServiceTest {
 
   @Test
   public void registrarFilme() throws DuplicateMemberException {
-    MoviesEntity moviesEntity = this.moviesMock.getFilmesEntity();
-    when(this.repository.save(any())).thenReturn(moviesEntity);
+    MovieEntity movieEntity = this.moviesMock.getFilmesEntity();
+    when(this.repository.save(any())).thenReturn(movieEntity);
     this.service.registrarFilme(this.requestMock.getGestaoFilmesInsertRequest());
   }
 
   @Test
   public void registrarFilmeSemMapper() throws DuplicateMemberException {
-    MoviesEntity moviesEntity = this.moviesMock.getFilmesEntity();
-    when(this.repository.save(any())).thenReturn(moviesEntity);
-    when(this.requestMapper.mapTO((ManagementMovieInsertRequest) any())).thenReturn(moviesEntity);
+    MovieEntity movieEntity = this.moviesMock.getFilmesEntity();
+    when(this.repository.save(any())).thenReturn(movieEntity);
+    when(this.requestMapper.mapTO((ManagementMovieInsertRequest) any())).thenReturn(movieEntity);
     this.service.registrarFilme(this.requestMock.getGestaoFilmesInsertRequest());
   }
 

@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
   }
 )
 @Entity
-public class MoviesEntity {
+public class MovieEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

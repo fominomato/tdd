@@ -1,15 +1,15 @@
 package com.pessoal.andre.models.mapper;
 
-import com.pessoal.andre.models.entities.MoviesEntity;
+import com.pessoal.andre.models.entities.MovieEntity;
 import com.pessoal.andre.models.representation.ManagementMovieFindByResponse;
 import com.pessoal.andre.models.representation.ManagementMovieInsertRequest;
 import org.springframework.stereotype.Component;
 
 @Component
-public class GestaoFilmesRequestMapper {
+public class ManagementMovieRequestMapper {
 
-  public MoviesEntity mapTO(ManagementMovieInsertRequest request) {
-    MoviesEntity response = new MoviesEntity();
+  public MovieEntity mapTO(ManagementMovieInsertRequest request) {
+    MovieEntity response = new MovieEntity();
     response.setName(request.getName());
     response.setGenre(request.getGenre().toUpperCase());
     response.setQuantity(request.getQuantity());
@@ -17,11 +17,11 @@ public class GestaoFilmesRequestMapper {
     return response;
   }
 
-  public ManagementMovieFindByResponse mapTO(MoviesEntity moviesEntity) {
+  public ManagementMovieFindByResponse mapTO(MovieEntity movieEntity) {
     ManagementMovieFindByResponse response = new ManagementMovieFindByResponse();
-    response.setGenre(moviesEntity.getGenre());
-    response.setName(moviesEntity.getName());
-    response.setQuantity(moviesEntity.getQuantity());
+    response.setGenre(movieEntity.getGenre());
+    response.setName(movieEntity.getName());
+    response.setQuantity(movieEntity.getQuantity());
     return response;
   }
 }
