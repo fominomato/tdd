@@ -9,9 +9,9 @@ public class ManagementMovieInsertRequestMock {
 
   public ManagementMovieInsertRequest getGestaoFilmesInsertRequest() {
     ManagementMovieInsertRequest request = new ManagementMovieInsertRequest();
-    request.setGenero(this.moviesMock.getFilmesEntity().getGenre());
-    request.setNome(this.moviesMock.getFilmesEntity().getName());
-    request.setQuantidade(this.moviesMock.getFilmesEntity().getQuantity());
+    request.setGenre(this.moviesMock.getFilmesEntity().getGenre());
+    request.setName(this.moviesMock.getFilmesEntity().getName());
+    request.setQuantity(this.moviesMock.getFilmesEntity().getQuantity());
     return request;
   }
 }

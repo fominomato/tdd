@@ -22,14 +22,14 @@ public class ManagementMovieRequestMapperTest {
   @Test
   public void mapTO() {
     MoviesEntity entity = this.requestMapper.mapTO(this.getGestaoFilmesInsertRequest());
-    Assert.assertEquals(entity.getGenre(), this.getGestaoFilmesInsertRequest().getGenero());
+    Assert.assertEquals(entity.getGenre(), this.getGestaoFilmesInsertRequest().getGenre());
   }
 
   private ManagementMovieInsertRequest getGestaoFilmesInsertRequest() {
     ManagementMovieInsertRequest response = new ManagementMovieInsertRequest();
-    response.setNome("TESTE");
-    response.setGenero("TECNOLOGIA");
-    response.setQuantidade(10);
+    response.setName("TESTE");
+    response.setGenre("TECNOLOGIA");
+    response.setQuantity(10);
     return response;
   }
 

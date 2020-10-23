@@ -1,14 +1,11 @@
 package com.pessoal.andre.service;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
-
 import com.pessoal.andre.mock.entity.MoviesMock;
+import com.pessoal.andre.mock.representation.ManagementMovieInsertRequestMock;
 import com.pessoal.andre.models.entities.MoviesEntity;
 import com.pessoal.andre.models.mapper.GestaoFilmesRequestMapper;
 import com.pessoal.andre.models.representation.ManagementMovieInsertRequest;
-import com.pessoal.andre.repository.FilmesRepository;
-import com.pessoal.andre.mock.representation.ManagementMovieInsertRequestMock;
+import com.pessoal.andre.repository.MoviesRepository;
 import javassist.bytecode.DuplicateMemberException;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Rule;
@@ -20,6 +17,9 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.dao.DataIntegrityViolationException;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+
 @Slf4j
 @RunWith(MockitoJUnitRunner.class)
 public class ManagementMovieInsertServiceTest {
@@ -28,7 +28,7 @@ public class ManagementMovieInsertServiceTest {
   private ManagementMovieInsertService service;
 
   @Mock
-  private FilmesRepository repository;
+  private MoviesRepository repository;
 
   @Mock
   private GestaoFilmesRequestMapper requestMapper;

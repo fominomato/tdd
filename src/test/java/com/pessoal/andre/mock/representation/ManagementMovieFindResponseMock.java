@@ -14,9 +14,9 @@ public class ManagementMovieFindResponseMock {
       filme = this.moviesMock.getFilmesEntity();
     }
     ManagementMovieFindByResponse request = new ManagementMovieFindByResponse();
-    request.setGenero(filme.getGenre());
-    request.setNome(filme.getName());
-    request.setQuantidade(filme.getQuantity());
+    request.setGenre(filme.getGenre());
+    request.setName(filme.getName());
+    request.setQuantity(filme.getQuantity());
     return request;
   }
 }

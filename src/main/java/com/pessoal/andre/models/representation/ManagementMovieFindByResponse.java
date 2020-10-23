@@ -5,10 +5,10 @@ import lombok.Data;
 @Data
 public class ManagementMovieFindByResponse {
 
-  private String nome;
+  private String name;
 
-  private Integer quantidade;
+  private Integer quantity;
 
-  private String genero;
+  private String genre;
 
 }

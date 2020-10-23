@@ -3,7 +3,7 @@ package com.pessoal.andre.service;
 import com.pessoal.andre.models.entities.MoviesEntity;
 import com.pessoal.andre.models.mapper.GestaoFilmesRequestMapper;
 import com.pessoal.andre.models.representation.ManagementMovieInsertRequest;
-import com.pessoal.andre.repository.FilmesRepository;
+import com.pessoal.andre.repository.MoviesRepository;
 import javassist.bytecode.DuplicateMemberException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class ManagementMovieInsertService {
 
-  private final FilmesRepository filmesRepository;
+  private final MoviesRepository moviesRepository;
 
   private final GestaoFilmesRequestMapper requestMapper;
 
@@ -25,7 +25,7 @@ public class ManagementMovieInsertService {
     try {
       this.aplicaRemocao(managementMovieInsertRequest);
       MoviesEntity moviesEntity = this.requestMapper.mapTO(managementMovieInsertRequest);
-      this.filmesRepository.save(moviesEntity);
+      this.moviesRepository.save(moviesEntity);
     } catch (DataIntegrityViolationException e) {
       log.error("Issue found because this movie its duplicated!");
       throw new DuplicateMemberException("Filme em duplicidade!");
@@ -33,8 +33,8 @@ public class ManagementMovieInsertService {
   }
 
   private void aplicaRemocao(ManagementMovieInsertRequest managementMovieInsertRequest) {
-    if (managementMovieInsertRequest.getGenero().equalsIgnoreCase("TERROR")) {
-      managementMovieInsertRequest.setQuantidade(managementMovieInsertRequest.getQuantidade() - 1);
+    if (managementMovieInsertRequest.getGenre().equalsIgnoreCase("TERROR")) {
+      managementMovieInsertRequest.setQuantity(managementMovieInsertRequest.getQuantity() - 1);
     }
   }
 }

@@ -10,18 +10,18 @@ public class GestaoFilmesRequestMapper {
 
   public MoviesEntity mapTO(ManagementMovieInsertRequest request) {
     MoviesEntity response = new MoviesEntity();
-    response.setName(request.getNome());
-    response.setGenre(request.getGenero().toUpperCase());
-    response.setQuantity(request.getQuantidade());
+    response.setName(request.getName());
+    response.setGenre(request.getGenre().toUpperCase());
+    response.setQuantity(request.getQuantity());
     response.setCreatedBy("manuel"); //@todo quando implementar a autenticao o ideal será este dado vir de la
     return response;
   }
 
   public ManagementMovieFindByResponse mapTO(MoviesEntity moviesEntity) {
     ManagementMovieFindByResponse response = new ManagementMovieFindByResponse();
-    response.setGenero(moviesEntity.getGenre());
-    response.setNome(moviesEntity.getName());
-    response.setQuantidade(moviesEntity.getQuantity());
+    response.setGenre(moviesEntity.getGenre());
+    response.setName(moviesEntity.getName());
+    response.setQuantity(moviesEntity.getQuantity());
     return response;
   }
 }
