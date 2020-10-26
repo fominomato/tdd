@@ -28,7 +28,7 @@ public class ManagementMovieSearchService {
           (findByRequest.getName() != null && findByRequest.getName().equalsIgnoreCase(item.getName()))
       )
       .collect(Collectors.toList());
-    log.info("A pesquisa retornou " + this.moviesRepository.findAll().size() + " registros!");
+    log.info("A pesquisa retornou " + entityList.size() + " registros!");
     return entityList.stream()
         .map(this.requestMapper::mapTO)
         .collect(Collectors.toList());
