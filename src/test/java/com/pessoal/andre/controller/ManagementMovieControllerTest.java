@@ -23,13 +23,8 @@ public class ManagementMovieControllerTest {
   private ManagementMovieInsertService service;
 
   @Test
-  public void addFilme() throws DuplicateMemberException {
-    doNothing().when(this.service).registrarFilme(any());
-    this.controller.adicionaFilme(Mockito.mock(ManagementMovieInsertRequest.class));
-  }
-
-  @Test
-  public void pesquisaFilme() {
-    //@todo vamos implementar juntos
+  public void addMovie() throws DuplicateMemberException {
+    doNothing().when(this.service).addMovie(any());
+    this.controller.addMovie(Mockito.mock(ManagementMovieInsertRequest.class));
   }
 }

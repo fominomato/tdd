@@ -7,11 +7,11 @@ public class ManagementMovieInsertRequestMock {
 
   private MoviesMock moviesMock = new MoviesMock();
 
-  public ManagementMovieInsertRequest getGestaoFilmesInsertRequest() {
+  public ManagementMovieInsertRequest getManagementMovieInsertRequest() {
     ManagementMovieInsertRequest request = new ManagementMovieInsertRequest();
-    request.setGenre(this.moviesMock.getFilmesEntity().getGenre());
-    request.setName(this.moviesMock.getFilmesEntity().getName());
-    request.setQuantity(this.moviesMock.getFilmesEntity().getQuantity());
+    request.setGenre(this.moviesMock.getMoviesEntity().getGenre());
+    request.setName(this.moviesMock.getMoviesEntity().getName());
+    request.setQuantity(this.moviesMock.getMoviesEntity().getQuantity());
     return request;
   }
 }

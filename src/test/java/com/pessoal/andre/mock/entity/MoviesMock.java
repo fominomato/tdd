@@ -14,12 +14,12 @@ public class MoviesMock {
 
   private Faker faker;
 
-  public MovieEntity getFilmesEntity() {
+  public MovieEntity getMoviesEntity() {
     this.faker = new Faker();
     return this.generated();
   }
 
-  public List<MovieEntity> getListOfFilmesEntity(int numberOfElements) {
+  public List<MovieEntity> getListOfMoviesEntity(int numberOfElements) {
     this.faker = new Faker();
     List<MovieEntity> entityList = new ArrayList<>();
     for (int c = 0; c < numberOfElements; c++) {

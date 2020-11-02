@@ -41,10 +41,10 @@ public class ManagementMovieSearchServiceTest {
   private MoviesMock moviesMock = new MoviesMock();
 
   @Test
-  public void pesquisaFilmes() {
-    ManagementMovieFindByRequest request = this.findRequestMock.getGestaoFilmesFindRequest();
+  public void searchMovies() {
+    ManagementMovieFindByRequest request = this.findRequestMock.getManagementMovieFindRequest();
     request.setName(null);
-    List<MovieEntity> movieEntityList = this.moviesMock.getListOfFilmesEntity(2000);
+    List<MovieEntity> movieEntityList = this.moviesMock.getListOfMoviesEntity(2000);
     when(this.moviesRepository.findAll()).thenReturn(movieEntityList);
     when(this.requestMapper.mapTO((MovieEntity) any())).thenReturn(this.responseMock.getGestaoFilmesFindByResponse(
         (movieEntityList

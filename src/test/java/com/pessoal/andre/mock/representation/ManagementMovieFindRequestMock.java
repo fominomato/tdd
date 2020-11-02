@@ -7,10 +7,10 @@ public class ManagementMovieFindRequestMock {
 
   private MoviesMock moviesMock = new MoviesMock();
 
-  public ManagementMovieFindByRequest getGestaoFilmesFindRequest() {
+  public ManagementMovieFindByRequest getManagementMovieFindRequest() {
     ManagementMovieFindByRequest request = new ManagementMovieFindByRequest();
-    request.setGenre(this.moviesMock.getFilmesEntity().getGenre());
-    request.setName(this.moviesMock.getFilmesEntity().getName());
+    request.setGenre(this.moviesMock.getMoviesEntity().getGenre());
+    request.setName(this.moviesMock.getMoviesEntity().getName());
     return request;
   }
 }

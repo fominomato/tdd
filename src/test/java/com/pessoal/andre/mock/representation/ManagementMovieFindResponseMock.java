@@ -11,7 +11,7 @@ public class ManagementMovieFindResponseMock {
   public ManagementMovieFindByResponse getGestaoFilmesFindByResponse(MovieEntity entity) {
     MovieEntity filme = entity;
     if (entity == null) {
-      filme = this.moviesMock.getFilmesEntity();
+      filme = this.moviesMock.getMoviesEntity();
     }
     ManagementMovieFindByResponse request = new ManagementMovieFindByResponse();
     request.setGenre(filme.getGenre());

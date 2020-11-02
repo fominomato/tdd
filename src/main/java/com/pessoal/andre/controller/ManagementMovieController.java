@@ -24,10 +24,10 @@ public class ManagementMovieController {
   private final ManagementMovieSearchService managementMovieSearchService;
 
   @PostMapping("/")
-  public ResponseEntity<?> adicionaFilme(
+  public ResponseEntity<?> addMovie(
       @RequestBody @Validated ManagementMovieInsertRequest managementMovieInsertRequest
   ) throws DuplicateMemberException {
-      this.managementMovieInsertService.registrarFilme(managementMovieInsertRequest);
+      this.managementMovieInsertService.addMovie(managementMovieInsertRequest);
       return ResponseEntity.ok().body("sucess");
   }
 

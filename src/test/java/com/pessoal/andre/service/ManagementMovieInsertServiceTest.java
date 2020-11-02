@@ -41,29 +41,24 @@ public class ManagementMovieInsertServiceTest {
   private ManagementMovieInsertRequestMock requestMock = new ManagementMovieInsertRequestMock();
 
   @Test
-  public void registrarFilme() throws DuplicateMemberException {
-    MovieEntity movieEntity = this.moviesMock.getFilmesEntity();
+  public void addMovie() throws DuplicateMemberException {
+    MovieEntity movieEntity = this.moviesMock.getMoviesEntity();
     when(this.repository.save(any())).thenReturn(movieEntity);
-    this.service.registrarFilme(this.requestMock.getGestaoFilmesInsertRequest());
+    this.service.addMovie(this.requestMock.getManagementMovieInsertRequest());
   }
 
   @Test
-  public void registrarFilmeSemMapper() throws DuplicateMemberException {
-    MovieEntity movieEntity = this.moviesMock.getFilmesEntity();
+  public void addMoviesMapper() throws DuplicateMemberException {
+    MovieEntity movieEntity = this.moviesMock.getMoviesEntity();
     when(this.repository.save(any())).thenReturn(movieEntity);
     when(this.requestMapper.mapTO((ManagementMovieInsertRequest) any())).thenReturn(movieEntity);
-    this.service.registrarFilme(this.requestMock.getGestaoFilmesInsertRequest());
+    this.service.addMovie(this.requestMock.getManagementMovieInsertRequest());
   }
 
   @Test
-  public void registrarFilmeDuplicateRule() throws DuplicateMemberException {
+  public void addMovieDuplicateRule() throws DuplicateMemberException {
     exceptionRule.expect(DuplicateMemberException.class);
     when(this.repository.save(any())).thenThrow(new DataIntegrityViolationException("DUPLICATE"));
-    this.service.registrarFilme(this.requestMock.getGestaoFilmesInsertRequest());
-  }
-
-  @Test
-  public void pesquisaFilmes() {
-
+    this.service.addMovie(this.requestMock.getManagementMovieInsertRequest());
   }
 }

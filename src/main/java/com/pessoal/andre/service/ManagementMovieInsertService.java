@@ -21,9 +21,9 @@ public class ManagementMovieInsertService {
   private final ManagementMovieRequestMapper requestMapper;
 
   @Transactional(rollbackFor = DataIntegrityViolationException.class)
-  public void registrarFilme(ManagementMovieInsertRequest managementMovieInsertRequest) throws DuplicateMemberException {
+  public void addMovie(ManagementMovieInsertRequest managementMovieInsertRequest) throws DuplicateMemberException {
     try {
-      this.aplicaRemocao(managementMovieInsertRequest);
+      this.addRuleToInsert(managementMovieInsertRequest);
       MovieEntity movieEntity = this.requestMapper.mapTO(managementMovieInsertRequest);
       this.moviesRepository.save(movieEntity);
     } catch (DataIntegrityViolationException e) {
@@ -32,7 +32,7 @@ public class ManagementMovieInsertService {
     }
   }
 
-  private void aplicaRemocao(ManagementMovieInsertRequest managementMovieInsertRequest) {
+  private void addRuleToInsert(ManagementMovieInsertRequest managementMovieInsertRequest) {
     if (managementMovieInsertRequest.getGenre().equalsIgnoreCase("TERROR")) {
       managementMovieInsertRequest.setQuantity(managementMovieInsertRequest.getQuantity() - 1);
     }

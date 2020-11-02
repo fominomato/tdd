@@ -1,6 +1,4 @@
-package com.pessoal.andre;
-
-import static org.junit.Assert.*;
+package com.pessoal.andre.config;
 
 import org.junit.Test;
 
