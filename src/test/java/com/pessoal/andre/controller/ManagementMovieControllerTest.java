@@ -1,8 +1,9 @@
 package com.pessoal.andre.controller;
 
 import com.pessoal.andre.models.representation.ManagementMovieInsertRequest;
-import com.pessoal.andre.service.ManagementMovieInsertService;
+import com.pessoal.andre.services.ManagementMovieInsertService;
 import javassist.bytecode.DuplicateMemberException;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -13,6 +14,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 
+@Slf4j
 @RunWith(MockitoJUnitRunner.class)
 public class ManagementMovieControllerTest {
 

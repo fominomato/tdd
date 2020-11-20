@@ -1,5 +1,6 @@
 package com.pessoal.andre.models.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "Filmes",  uniqueConstraints={
     @UniqueConstraint( name = "uq_nome",  columnNames ={"nome"})
   }

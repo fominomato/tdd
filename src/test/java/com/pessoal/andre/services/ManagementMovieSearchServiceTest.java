@@ -1,4 +1,4 @@
-package com.pessoal.andre.service;
+package com.pessoal.andre.services;
 
 import com.pessoal.andre.mock.entity.MoviesMock;
 import com.pessoal.andre.mock.representation.ManagementMovieFindRequestMock;

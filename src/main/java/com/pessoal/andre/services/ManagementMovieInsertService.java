@@ -1,4 +1,4 @@
-package com.pessoal.andre.service;
+package com.pessoal.andre.services;
 
 import com.pessoal.andre.models.entities.MovieEntity;
 import com.pessoal.andre.models.mapper.ManagementMovieRequestMapper;
